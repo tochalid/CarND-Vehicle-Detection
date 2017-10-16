@@ -59,7 +59,8 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 
 Here are examples using the `LUV` and `HSV` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)` for a 'car' and a 'notcar' class:
 
-#####a. LUV Color Space
+####a. LUV Color Space
+
 ![alt text][image11]
 
 ![alt text][image12]
@@ -68,7 +69,7 @@ Here are examples using the `LUV` and `HSV` color space and HOG parameters of `o
 
 ![alt text][image14]
 
-#####b. HSV Color Space
+####b. HSV Color Space
 
 ![alt text][image21]
 
@@ -77,11 +78,6 @@ Here are examples using the `LUV` and `HSV` color space and HOG parameters of `o
 ![alt text][image23]
 
 ![alt text][image24]
-
-
-
-
-
 
 
 ####2. Explain how you settled on your final choice of HOG parameters.
