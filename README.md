@@ -124,7 +124,7 @@ Sliding Window Search
 
 I decided to search with a sliding window in 2 specific focus area, see following definitions in #115-120 of file `VehicleDetection.py`:
  
-`window_scale = (0.73, 1.35)`
+`window_scale = (0.73, 1.5)`
 
 `x_start_stop = [[640, 1280], [640, 1280]]`
 
@@ -136,7 +136,7 @@ I decided to search with a sliding window in 2 specific focus area, see followin
  
  Each area can be understood as vertical layer orthogonal to the lane scanning for objects in 2 different distances. I oriented the scale by intuition and "try-and-optimize" on the principle that objects appear smaller in distance and require higher granularity. Ultimately the patches are combined from each layer (adding in the heatmap) and are a calculus of the dimension of the layer, the dimension of patch and its overlap and the scale-factor chosen for each individual layer.
  
-Total # of windows: 1318
+Total # of windows: 2722
 
 ![alt text][image3]
 
@@ -147,9 +147,9 @@ Total # of windows: 1318
 Ultimately I searched using HOG features of all HSV-channels plus spatially binned color and histograms of color in the feature vector. 
 In order to optimize the performance the HOG-features are calculated only once for each of the three layers. The sliding patch cuts the relevant information and combines it with the spacial and histogram filter using the same patch dimensions, see the code section in line #202-235 in function `find_cars` in file `VD_functions.py` .
 
-The trade-off is a stable detection and bounding-box versus long computing times. In optimal case computing would be done in real-time. The model together with the sliding patch over pre-calculated HOG focus areas reduced the time from ca.2-3 sec to 0.08-0.15 sec per frame and depending on the parameter set, still too much for a real-world application.
+The trade-off is a stable detection and bounding-box versus long computing times. In optimal case computing would be done in real-time. The model together with the sliding patch over pre-calculated HOG focus areas reduced the time from ca.2-3 sec to 0.08-0.13 sec per frame and depending on the parameter set, still too much for a real-world application.
 
-Average Image processing time: 0.098 seconds
+Average Image processing time: 0.095 seconds
 
 ![alt text][image4]
 
@@ -171,7 +171,12 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 
 All steps fo the pipeline using the project 6 "Test Images":
-![alt text][image51]![alt text][image52]![alt text][image53]![alt text][image54]![alt text][image55]![alt text][image56]
+
+![alt text][image51]![alt text][image52]
+
+![alt text][image53]![alt text][image54]
+
+![alt text][image55]![alt text][image56]
 
 ---
 
