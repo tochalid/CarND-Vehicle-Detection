@@ -41,7 +41,7 @@ Provide a README that includes all the rubric points: This document, you're read
 
 ---
 
-Histogram of Oriented Gradients (HOG)
+##Histogram of Oriented Gradients (HOG)
 
 1. Extracting HOG features from the training images
 
@@ -107,7 +107,7 @@ In line #65-73 the stacked features are normalized using `StandardScaler`. After
 
 ---
 
-Sliding Window Search
+##Sliding Window Search
 
 1. Implementation of the sliding window search.
 
@@ -144,7 +144,7 @@ Average Image processing time: 0.098 seconds
 
 ---
 
-Video Implementation
+##Video Implementation
 
 
 1. Link to final video output.  
@@ -169,7 +169,7 @@ All steps fo the pipeline using the project 6 "Test Images":
 
 ---
 
-Discussion
+##Discussion
 
 
 4 Thoughts
