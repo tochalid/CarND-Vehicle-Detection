@@ -40,8 +40,9 @@ In the following I will consider the rubric points individually and describe how
 Provide a README that includes all the rubric points: This document, you're reading it.
 
 ---
-
-##Histogram of Oriented Gradients (HOG)
+#
+##
+###Histogram of Oriented Gradients (HOG)
 
 1. Extracting HOG features from the training images
 
