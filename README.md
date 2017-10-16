@@ -140,7 +140,7 @@ Total # of windows: 2880
 Ultimately I searched using HOG features of all HSV-channels plus spatially binned color and histograms of color in the feature vector. 
 In order to optimize the performance the HOG-features are calculated only once for each of the three layers. The sliding patch cuts the relevant information and combines it with the spacial and histogram filter using the same patch dimensions, see the code section in line #202-235 in function `find_cars` in file `VD_functions.py` .
 
-The trade-off is a stable detection and bounding-box versus long computing times. In optimal case computing would be done in real-time. The model together with the sliding patch over pre-calculated HOG focus areas reduced the time from ca.2~3 sec to 0.08~0.15 sec per frame and depending on the parameter set, still too much for a real-world application.
+The trade-off is a stable detection and bounding-box versus long computing times. In optimal case computing would be done in real-time. The model together with the sliding patch over pre-calculated HOG focus areas reduced the time from ca.2-3 sec to 0.08-0.15 sec per frame and depending on the parameter set, still too much for a real-world application.
 
 Average Image processing time: 0.098 seconds
 
