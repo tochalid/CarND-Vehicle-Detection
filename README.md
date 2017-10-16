@@ -17,8 +17,8 @@ Steps of this project:
 [image13]: ./examples/color_cha_2_LUV.png
 [image14]: ./examples/hog_cha_1_LUV.png
 [image21]: ./examples/color_cha_1_HSV.png
-[image22]: ./examples/color_cha_2_HSV.png
-[image23]: ./examples/hog_cha_1_HSV.png
+[image22]: ./examples/hog_cha_1_HSV.png
+[image23]: ./examples/color_cha_2_HSV.png
 [image24]: ./examples/hog_cha_2_HSV.png
 [image3]: ./examples/scaled_windows.png
 [image4]: ./examples/detected_vehicles.png
