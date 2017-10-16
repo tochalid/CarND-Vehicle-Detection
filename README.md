@@ -43,7 +43,7 @@ In the following I will consider the rubric points individually and describe how
 
 ---
 
-##Provide a README that includes all the rubric points
+### Provide a README that includes all the rubric points
 This document, you're reading it.
 
 Histogram of Oriented Gradients (HOG)
