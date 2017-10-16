@@ -5,34 +5,23 @@
 
 **Vehicle Detection Project**
 
-Steps of this project:
+The goals / steps of this project are the following:
 
 * Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier
-* Additionally, apply a color transform and append binned color features, as well as histograms of color, to your HOG feature vector.
-* Normalize the features and randomize the image selection for training and testing of the classifier.
-* Implement a sliding-window technique and use trained classifier to search for vehicles in images.
-* Run the pipeline on a video stream (project_video.mp4)
-* Create a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
+* Optionally, you can also apply a color transform and append binned color features, as well as histograms of color, to your HOG feature vector. 
+* Note: for those first two steps don't forget to normalize your features and randomize a selection for training and testing.
+* Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
+* Run your pipeline on a video stream (start with the test_video.mp4 and later implement on full project_video.mp4) and create a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./examples/train_images_RGB.png
-[image11]: ./examples/color_cha_1_LUV.png
-[image12]: ./examples/color_cha_2_LUV.png
-[image13]: ./examples/hog_cha_1_LUV.png
-[image14]: ./examples/hog_cha_2_LUV.png
-[image21]: ./examples/color_cha_1_HSV.png
-[image22]: ./examples/color_cha_2_HSV.png
-[image23]: ./examples/hog_cha_1_HSV.png
-[image24]: ./examples/hog_cha_2_HSV.png
-[image3]: ./examples/scaled_windows.png
-[image4]: ./examples/detected_vehicles.png
-[image51]: ./examples/llb_h_compare_1.png
-[image52]: ./examples/llb_h_compare_2.png
-[image53]: ./examples/llb_h_compare_3.png
-[image54]: ./examples/llb_h_compare_4.png
-[image55]: ./examples/llb_h_compare_5.png
-[image56]: ./examples/llb_h_compare_6.png
+[image1]: ./examples/car_not_car.png
+[image2]: ./examples/HOG_example.jpg
+[image3]: ./examples/sliding_windows.jpg
+[image4]: ./examples/sliding_window.jpg
+[image5]: ./examples/bboxes_and_heat.png
+[image6]: ./examples/labels_map.png
+[image7]: ./examples/output_bboxes.png
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -47,38 +36,20 @@ You're reading it!
 
 ###Histogram of Oriented Gradients (HOG)
 
-####1. Extracting HOG features from the training images
+####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in function `get_hog_features` in lines #239-258 of the file called `VD_functions.py`. The function is called in line #50,56 for car and notcars by the `extract_features` function in file `SVM_Classifier.py`. That function is defined also in `VD_functions.py`, see line #87-138.
+The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
 
-I started by reading in all the `vehicle` and `non-vehicle` images, see #14-18 in `SVM_Classifier.py`. 
+I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1]
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
-Here are examples using the `LUV` and `HSV` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)` for a 'car' and a 'notcar' class:
+Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
-####a. LUV Color Space
 
-![alt text][image11]
-
-![alt text][image12]
-
-![alt text][image13]
-
-![alt text][image14]
-
-####b. HSV Color Space
-
-![alt text][image21]
-
-![alt text][image22]
-
-![alt text][image23]
-
-![alt text][image24]
-
+![alt text][image2]
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 
