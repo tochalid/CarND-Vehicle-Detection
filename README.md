@@ -1,9 +1,12 @@
-# Project
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+## Writeup Template
+### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
-## VEHICLE DETECTION
+---
 
-###Steps of this project:
+
+**Vehicle Detection Project**
+
+Steps of this project:
 
 * Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier
 * Additionally, apply a color transform and append binned color features, as well as histograms of color, to your HOG feature vector.
@@ -24,20 +27,14 @@
 [image22]: ./examples/color_cha_2_HSV.png
 [image23]: ./examples/hog_cha_1_HSV.png
 [image24]: ./examples/hog_cha_2_HSV.png
-
 [image3]: ./examples/scaled_windows.png
-
 [image4]: ./examples/detected_vehicles.png
-
 [image51]: ./examples/llb_h_compare_1.png
 [image52]: ./examples/llb_h_compare_2.png
 [image53]: ./examples/llb_h_compare_3.png
 [image54]: ./examples/llb_h_compare_4.png
 [image55]: ./examples/llb_h_compare_5.png
 [image56]: ./examples/llb_h_compare_6.png
-
-[image6]: ./examples
-[image7]: ./examples
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -45,15 +42,14 @@
 In the following I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-####
 
-#####Provide a README that includes all the rubric points
+##Provide a README that includes all the rubric points
 This document, you're reading it.
 
 Histogram of Oriented Gradients (HOG)
 ===
 
-####1. Extracting HOG features from the training images
+###1. Extracting HOG features from the training images
 
 The code for this step is contained in function `get_hog_features` in lines #239-258 of the file called `VD_functions.py`. The function is called in line #50,56 for car and notcars by the `extract_features` function in file `SVM_Classifier.py`. That function is defined also in `VD_functions.py`, see line #87-138.
 
@@ -65,7 +61,7 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 
 Here are examples using the `LUV` and `HSV` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)` for a 'car' and a 'notcar' class:
 
-######a. LUV Color Space
+####a. LUV Color Space
 ![alt text][image11]
 
 ![alt text][image12]
@@ -74,7 +70,7 @@ Here are examples using the `LUV` and `HSV` color space and HOG parameters of `o
 
 ![alt text][image14]
 
-######b. HSV Color Space
+####b. HSV Color Space
 
 ![alt text][image21]
 
@@ -84,7 +80,7 @@ Here are examples using the `LUV` and `HSV` color space and HOG parameters of `o
 
 ![alt text][image24]
 
-####2. The final choice of HOG parameters
+###2. The final choice of HOG parameters
 
 I tried many combinations of parameters and a guiding trade-off remained computing time vs. accuracy. For the color space i got better result for 'HSV'.
 About half of the "Average Image Processing" time goes to hog feature extraction. Thus, number of channels (the less the shorter) and pixel-per-cell (the more the shorter) have the most impact. But less channels and more pixels both cause decrease in accuracy detecting hot pixels. Here I chose 3 channels and values of 32 for spacial and histogram parameters:
@@ -105,7 +101,7 @@ About half of the "Average Image Processing" time goes to hog feature extraction
  
 Roughly the other half of the computation goes to spatial-, historgram-features extraction and sliding the window patch over the focus areas cutting hog features and adding up but smoothening the heatmap. The tweaking of spatial and histogram features remained less sensitive to the computation time, one reason is because of the higher total number of hog features. Nevertheless, they add a relevant signature (~2-3%)to the normalized feature-vector moving from ~96.x% to some 99.8% accuracy in predictions.
 
-####3. Classifier training using selected HOG features and color features
+###3. Classifier training using selected HOG features and color features
 
 For prediction I trained a linear SVM using `sklearn.svm.LinearSVC` class in file `SVM_Classifier.py`. First it reads all the data. In line #27-36 the extraction parameters are set used by the SVM. In line #50-61 the feature vector is build within the function `extract_features` of file `VD_functions`, therein line #87-137. 
 
@@ -116,7 +112,7 @@ In line #65-73 the stacked features are normalized using `StandardScaler`. After
 Sliding Window Search
 ===
 
-####1. Implementation of the sliding window search.
+###1. Implementation of the sliding window search.
 
 I decided to search with a sliding window in 2 specific focus area, see following definitions in #115-120 of file `VehicleDetection.py`:
  
@@ -136,7 +132,7 @@ Total # of windows: 1299
 
 ![alt text][image3]
 
-####2. Optimize the performance of the classier
+###2. Optimize the performance of the classier
 
 Ultimately I searched using HOG features of all HSV-channels plus spatially binned color and histograms of color in the feature vector. 
 In order to optimize the performance the HOG-features are calculated only once for each of the three layers. The sliding patch cuts the relevant information and combines it with the spacial and histogram filter using the same patch dimensions, see the code section in line #202-235 in function `find_cars` in file `VD_functions.py` .
@@ -151,12 +147,12 @@ Average Image processing time: 0.095 seconds
 Video Implementation
 ===
 
-####1. Link to final video output.  
+###1. Link to final video output.  
 The pipeline perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are there but it's identifying the vehicles most of the time with minimal false positives.)
 Here's a [link to my video result](./project_video_detected.mp4)
 
 
-####2. Filter for false positives and combining overlapping bounding boxes.
+###2. Filter for false positives and combining overlapping bounding boxes.
 
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap in line #50-56 and then thresholded (defintion in #28-34) that map to identify vehicle positions, see file `VD_DetectorClass.py`.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
 
@@ -174,7 +170,7 @@ Here's an example result showing the heatmap from a series of frames of video, t
 Discussion
 ===
 
-####4 Thoughts
+###4 Thoughts
 i) The feature extraction has been optimized for the provided data set and the specific project video. Specifically the detection area has been minimized (only right and bottom half) to reduce the computation time for each frame. For a left curve, or hilly track the pipeline likely will fail. However, the detection area can be reconfigured to satisfy new requirements.
 
 ii) Further, additional driving and lightning conditions may impact the prediction accuracy. This implementation uses one colorspace. The combination of selected channels from different colorspace could improve the accuracy and generalize better for a variaty of conditions. Another approach could be the use of a Neural Network for detection with augmenting data. In order to detect additional models more training data will be required for trucks, vans etc. The classifier would need to learn and predict additional classes.
