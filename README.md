@@ -48,6 +48,7 @@ This document, you're reading it.
 
 
 ##Histogram of Oriented Gradients (HOG)
+
 ###1. Extracting HOG features from the training images
 
 The code for this step is contained in function `get_hog_features` in lines #239-258 of the file called `VD_functions.py`. The function is called in line #50,56 for car and notcars by the `extract_features` function in file `SVM_Classifier.py`. That function is defined also in `VD_functions.py`, see line #87-138.
@@ -109,6 +110,7 @@ For prediction I trained a linear SVM using `sklearn.svm.LinearSVC` class in fil
 In line #65-73 the stacked features are normalized using `StandardScaler`. After the data is split into training and test. The split is balanced to contain equal volume of each class. In line #101 the classifier is trained.
 
 ##Sliding Window Search
+
 ###1. Implementation of the sliding window search.
 
 I decided to search with a sliding window in 2 specific focus area, see following definitions in #115-120 of file `VehicleDetection.py`:
@@ -142,6 +144,7 @@ Average Image processing time: 0.095 seconds
 ---
 
 ##Video Implementation
+
 ###1. Link to final video output.  
 The pipeline perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are there but it's identifying the vehicles most of the time with minimal false positives.)
 Here's a [link to my video result](./project_video_detected.mp4)
@@ -163,6 +166,7 @@ Here's an example result showing the heatmap from a series of frames of video, t
 ---
 
 ##Discussion
+
 ###4 Thoughts
 i) The feature extraction has been optimized for the provided data set and the specific project video. Specifically the detection area has been minimized (only right and bottom half) to reduce the computation time for each frame. For a left curve, or hilly track the pipeline likely will fail. However, the detection area can be reconfigured to satisfy new requirements.
 
