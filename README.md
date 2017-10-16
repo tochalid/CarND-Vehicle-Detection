@@ -48,7 +48,7 @@ This document, you're reading it.
 
 Histogram of Oriented Gradients (HOG)
 ===
-
+##
 ###1. Extracting HOG features from the training images
 
 The code for this step is contained in function `get_hog_features` in lines #239-258 of the file called `VD_functions.py`. The function is called in line #50,56 for car and notcars by the `extract_features` function in file `SVM_Classifier.py`. That function is defined also in `VD_functions.py`, see line #87-138.
