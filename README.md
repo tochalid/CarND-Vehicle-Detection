@@ -13,12 +13,12 @@ Steps of this project:
 [//]: # (Image References)
 [image1]: ./examples/train_images_RGB.png
 [image11]: ./examples/color_cha_1_LUV.png
-[image12]: ./examples/color_cha_2_LUV.png
-[image13]: ./examples/hog_cha_1_LUV.png
+[image12]: ./examples/hog_cha_1_LUV.png
+[image13]: ./examples/color_cha_2_LUV.png
 [image14]: ./examples/hog_cha_2_LUV.png
 [image21]: ./examples/color_cha_1_HSV.png
-[image22]: ./examples/color_cha_2_HSV.png
 [image23]: ./examples/hog_cha_1_HSV.png
+[image22]: ./examples/color_cha_2_HSV.png
 [image24]: ./examples/hog_cha_2_HSV.png
 [image3]: ./examples/scaled_windows.png
 [image4]: ./examples/detected_vehicles.png
@@ -164,12 +164,7 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 
 All steps fo the pipeline using the project 6 "Test Images":
-![alt text][image51]
-![alt text][image52]
-![alt text][image53]
-![alt text][image54]
-![alt text][image55]
-![alt text][image56]
+![alt text][image51]![alt text][image52]![alt text][image53]![alt text][image54]![alt text][image55]![alt text][image56]
 
 ---
 
