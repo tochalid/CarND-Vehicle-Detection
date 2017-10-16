@@ -61,6 +61,7 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 Here are examples using the `LUV` and `HSV` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)` for a 'car' and a 'notcar' class:
 
 a. LUV Color Space
+
 ![alt text][image11]
 
 ![alt text][image12]
@@ -82,10 +83,10 @@ b. HSV Color Space
 
 2. The final choice of HOG parameters
 
-I tried many combinations of parameters and a guiding trade-off remained computing time vs. accuracy. For the color space i got better result for 'HSV'.
+I tried many combinations of parameters and a guiding trade-off remained computing time vs. accuracy. For the color space i got better result for 'LUV'.
 About half of the "Average Image Processing" time goes to hog feature extraction. Thus, number of channels (the less the shorter) and pixel-per-cell (the more the shorter) have the most impact. But less channels and more pixels both cause decrease in accuracy detecting hot pixels. Here I chose 3 channels and values of 32 for spacial and histogram parameters:
 
-`color_space = 'HSV'  # Can be RGB, HSV, LUV, HLS, YUV, YCrCb`
+`color_space = 'LUV'  # Can be RGB, HSV, LUV, HLS, YUV, YCrCb`
 
 `orient = 9  # HOG orientations`
 
@@ -110,6 +111,10 @@ For prediction I trained a linear SVM using `sklearn.svm.LinearSVC` class in fil
 
 In line #65-73 the stacked features are normalized using `StandardScaler`. After the data is split into training and test. The split is balanced to contain equal volume of each class. In line #101 the classifier is trained.
 
+![alt text][image6]
+
+![alt text][image7]
+
 ---
 
 Sliding Window Search
@@ -131,7 +136,7 @@ I decided to search with a sliding window in 2 specific focus area, see followin
  
  Each area can be understood as vertical layer orthogonal to the lane scanning for objects in 2 different distances. I oriented the scale by intuition and "try-and-optimize" on the principle that objects appear smaller in distance and require higher granularity. Ultimately the patches are combined from each layer (adding in the heatmap) and are a calculus of the dimension of the layer, the dimension of patch and its overlap and the scale-factor chosen for each individual layer.
  
-Total # of windows: 2880
+Total # of windows: 1318
 
 ![alt text][image3]
 
